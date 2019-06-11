@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+    <title>PayMe - Payments</title>
+
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="public/favicon.ico">
+
+    <!-- App CSS -->
+    <link rel="stylesheet" href="public/css/app.css">
+</head>
+
+<body class="u-custombox-no-scroll">
+<!-- ========== HEADER ========== -->
+<header id="header" class="u-header">
+    <div class="u-header__section">
+        <div id="logoAndNav" class="container">
+            <!-- Nav -->
+            <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
+                <!-- Logo -->
+                <a class="navbar-brand u-header__navbar-brand u-header__navbar-brand-center" href="/"
+                   aria-label="PayMe">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="36px"
+                         height="36px" viewBox="0 0 36 36" xml:space="preserve" style="margin-bottom: 0;">
+            <path fill="#377dff"
+                  d="M18,0H29.38A6.62,6.62,0,0,1,36,6.62V18A18,18,0,0,1,18,36H18A18,18,0,0,1,0,18V18A18,18,0,0,1,18,0Z"/>
+                        <path fill="#fff"
+                              d="M679,395.44a17.22,17.22,0,0,1-6-1.34v-4.54a20.76,20.76,0,0,0,3.58,1.35,12.85,12.85,0,0,0,3.4.54,4.11,4.11,0,0,0,1.77-.28,1,1,0,0,0,.56-.94.93.93,0,0,0-.4-.76,6.14,6.14,0,0,0-1.35-.71c-.63-.27-1.48-.59-2.56-1a11.94,11.94,0,0,1-2.91-1.44,5,5,0,0,1-1.61-1.79,5.38,5.38,0,0,1-.51-2.47,4.37,4.37,0,0,1,1.51-3.53A8.15,8.15,0,0,1,679,377v-2h3v1.86a17.92,17.92,0,0,1,5.81,1.34l-1.72,3.92a14.14,14.14,0,0,0-5.47-1.29,3.55,3.55,0,0,0-1.63.27.86.86,0,0,0-.47.79,1,1,0,0,0,.34.75,5.45,5.45,0,0,0,1.18.66q.84.36,2.34.84a11.29,11.29,0,0,1,4.34,2.32,4.48,4.48,0,0,1,1.32,3.35,4.89,4.89,0,0,1-1.54,3.75,7.75,7.75,0,0,1-4.5,1.79V398h-3Z"
+                              transform="translate(-662 -369)"/>
+          </svg>
+                    <span class="u-header__navbar-brand-text">PayMe</span>
+                </a>
+                <!-- End Logo -->
+
+                <!-- Responsive Toggle Button -->
+                <button type="button" class="navbar-toggler btn u-hamburger" aria-label="Toggle navigation"
+                        aria-expanded="false"
+                        aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+          <span id="hamburgerTrigger" class="u-hamburger__box">
+            <span class="u-hamburger__inner"></span>
+          </span>
+                </button>
+                <!-- End Responsive Toggle Button -->
+
+                <!-- Navigation -->
+                <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse">
+                    <ul class="navbar-nav u-header__navbar-nav">
+                        <!-- Logout -->
+                        <li class="nav-item u-header__nav-item">
+                            <a class="nav-link u-header__nav-link" href="/">Logout</a>
+                        </li>
+                        <!-- End Logout -->
+                    </ul>
+                </div>
+                <!-- End Navigation -->
+            </nav>
+            <!-- End Nav -->
+        </div>
+    </div>
+</header>
+<!-- ========== END HEADER ========== -->
+
+<!-- ========== MAIN ========== -->
+<main id="content" role="main">
+    <!-- Breadcrumb Section -->
+    <div class="bg-primary">
+        <div class="container space-top-1 pb-3">
+            <div class="row">
+                <div class="col-lg-7 order-lg-1">
+                    <!-- User Info -->
+                    <div class="media d-block d-sm-flex align-items-sm-center">
+                        <div class="u-lg-avatar position-relative mb-3 mb-sm-0 mr-3">
+                            <span class="btn btn-lg btn-light btn-icon text-muted gradient-half-primary-v2 rounded-circle">
+                              <span class="btn-icon__inner">J</span>
+                            </span>
+                            <!--img class="img-fluid rounded-circle"
+                                 src="#"-->
+                            <span class="badge badge-md badge-outline-success badge-pos badge-pos--bottom-right rounded-circle">
+                  <span class="fas fa-check"></span>
+                </span>
+                        </div>
+                        <div class="media-body">
+                            <span class="d-block text-white small">Howdy,</span>
+                            <span class="d-block text-white font-weight-medium">John Doe</span>
+                            <div class="mt-1">
+                                <a class="link-white small" href="settings.html">Edit profile</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End User Info -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container space-bottom-1 space-bottom-lg-0">
+            <div class="d-lg-flex justify-content-lg-between align-items-lg-center">
+                <!-- Navbar -->
+                <div class="u-header u-header-left-aligned-nav u-header--bg-transparent-lg u-header--white-nav-links z-index-4">
+                    <div class="u-header__section bg-transparent">
+                        <nav class="navbar navbar-expand-lg u-header__navbar u-header__navbar--no-space">
+                            <div id="breadcrumbNavBar" class="collapse navbar-collapse u-header__navbar-collapse">
+                                <ul class="navbar-nav u-header__navbar-nav">
+                                    <!-- Dashboard -->
+                                    <li class="nav-item u-header__nav-item">
+                                        <a class="nav-link u-header__nav-link" href="dashboard.html">
+                                            Dashboard
+                                        </a>
+                                    </li>
+                                    <!-- Dashboard -->
+
+                                    <!-- Payments -->
+                                    <li class="nav-item u-header__nav-item">
+                                        <a class="nav-link u-header__nav-link active" href="payments.html">
+                                            Payments
+                                        </a>
+                                    </li>
+                                    <!-- Payments -->
+
+                                    <!-- Payment Forms -->
+                                    <li class="nav-item u-header__nav-item">
+                                        <a class="nav-link u-header__nav-link" href="forms.html">
+                                            Payment forms
+                                        </a>
+                                    </li>
+                                    <!-- Payment Forms -->
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <!-- End Navbar -->
+
+                <!-- Breadcrumb Nav Toggle Button -->
+                <div class="d-lg-none">
+                    <button type="button" class="navbar-toggler btn u-hamburger u-hamburger--white collapsed mb-3"
+                            aria-label="Toggle navigation"
+                            aria-expanded="false" aria-controls="breadcrumbNavBar" data-toggle="collapse"
+                            data-target="#breadcrumbNavBar">
+              <span id="breadcrumbHamburgerTrigger" class="u-hamburger__box">
+                <span class="u-hamburger__inner"></span>
+              </span>
+                    </button>
+                </div>
+                <!-- End Breadcrumb Nav Toggle Button -->
+
+                <div class="ml-lg-auto">
+                    <!-- Button -->
+                    <a class="btn btn-sm btn-soft-white text-nowrap transition-3d-hover" href="form-new.html">
+                        <span class="fas fa-plus small mr-2"></span>
+                        Create payment form
+                    </a>
+                    <!-- End Button -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumb Section -->
+
+    <!-- Content Section -->
+    <div class="bg-light">
+        <div class="container space-2">
+            <!-- Title -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="h6 mb-0">Payments</h3>
+            </div>
+            <!-- End Title -->
+            <!-- Earning Sources -->
+            <div class="card">
+                <div class="card-body p-4">
+                    <!-- Transaction Table -->
+                    <div class="table-responsive-md">
+                        <table class="table table-borderless table-striped">
+                            <thead>
+                            <tr class="text-uppercase font-size-1">
+                                <th scope="col" class="font-weight-medium">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        Transaction ID
+                                    </div>
+                                </th>
+                                <th scope="col" class="font-weight-medium">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        Customer
+                                    </div>
+                                </th>
+                                <th scope="col" class="font-weight-medium">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        Amount Paid
+                                    </div>
+                                </th>
+                                <th scope="col" class="font-weight-medium">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        Net earnings
+                                    </div>
+                                </th>
+                                <th scope="col" class="font-weight-medium">
+                                    <div class="d-flex justify-content-between align-items-center">
+
+                                    </div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody class="font-size-1">
+                            <tr>
+                                <td class="align-middle font-weight-normal">
+                                    <span class="d-block"> <a href="#"> <span class="fab fa-stripe"></span></a> ch_19yUeq2eZvKYlo2CSwbttFrw</span>
+                                    <span class="pl-4 d-block text-muted small">April 02, 2019</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="d-block">John Doe</span>
+                                    <span class="d-block text-muted small">john.doe@example.com</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="d-block">239.00 USD</span>
+                                    <a href="#" class="link-muted small">Laravel Course</a>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="d-block">223.44 USD</span>
+                                    <span class="d-block text-muted small">Platform Fee: 15.56 USD</span>
+                                </td>
+                                <td class="align-middle">
+                                    <a href="#" class="text-primary small mr-3"><span class="fas fa-receipt"></span> Receipt</a>
+                                    <a href="#" class="text-danger small"><span class="fas fa-redo-alt"></span> Refund</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle font-weight-normal">
+                                    <span class="d-block"> <a href="#"> <span class="fab fa-stripe"></span></a> ch_19yUeq2eZvKYlo2CSwbttFrw</span>
+                                    <span class="pl-4 d-block text-muted small">March 29, 2019</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="d-block">John Doe</span>
+                                    <span class="d-block text-muted small">john.doe@example.com</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="d-block">239.00 USD</span>
+                                    <a href="#" class="link-muted small">Laravel Course</a>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="d-block">223.44 USD</span>
+                                    <span class="d-block text-muted small">Platform Fee: 15.56 USD</span>
+                                </td>
+                                <td class="align-middle">
+                                    <a href="#" class="text-primary small mr-3"><span class="fas fa-receipt"></span> Receipt</a>
+                                    <span class="small text-muted"><span class="fas fa-circle small"></span> Refunded</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle font-weight-normal">
+                                    <span class="d-block"> <a href="#"> <span class="fab fa-stripe"></span></a> ch_19yUeq2eZvKYlo2CSwbttFrw</span>
+                                    <span class="pl-4 d-block text-muted small">March 22, 2019</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="d-block">John Doe</span>
+                                    <span class="d-block text-muted small">john.doe@example.com</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="d-block">239.00 USD</span>
+                                    <a href="#" class="link-muted small">Laravel Course</a>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="d-block">223.44 USD</span>
+                                    <span class="d-block text-muted small">Platform Fee: 15.56 USD</span>
+                                </td>
+                                <td class="align-middle">
+                                    <a href="#" class="text-primary small mr-3"><span class="fas fa-receipt"></span> Receipt</a>
+                                    <a href="#" class="text-danger small"><span class="fas fa-redo-alt"></span> Refund</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- End Transaction Table -->
+                </div>
+            </div>
+            <!-- End Earning Sources -->
+            <!-- Pagination -->
+            <nav class="d-flex justify-content-between align-items-center mt-3">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">«</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="#">8</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+                <small class="text-muted pb-2">Showing 3 of 8 entries</small>
+            </nav>
+            <!-- End Pagination -->
+        </div>
+    </div>
+    <!-- End Content Section -->
+</main>
+<!-- ========== END MAIN ========== -->
+
+<!-- ========== FOOTER ========== -->
+<footer class="container text-center space-2">
+    <!-- Logo -->
+    <a class="d-inline-flex align-items-center mb-3" href="/" aria-label="PayMe">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36px"
+             height="36px" viewBox="0 0 36 36" xml:space="preserve" style="margin-bottom: 0;">
+        <path fill="#377dff"
+              d="M18,0H29.38A6.62,6.62,0,0,1,36,6.62V18A18,18,0,0,1,18,36H18A18,18,0,0,1,0,18V18A18,18,0,0,1,18,0Z"/>
+            <path fill="#fff"
+                  d="M679,395.44a17.22,17.22,0,0,1-6-1.34v-4.54a20.76,20.76,0,0,0,3.58,1.35,12.85,12.85,0,0,0,3.4.54,4.11,4.11,0,0,0,1.77-.28,1,1,0,0,0,.56-.94.93.93,0,0,0-.4-.76,6.14,6.14,0,0,0-1.35-.71c-.63-.27-1.48-.59-2.56-1a11.94,11.94,0,0,1-2.91-1.44,5,5,0,0,1-1.61-1.79,5.38,5.38,0,0,1-.51-2.47,4.37,4.37,0,0,1,1.51-3.53A8.15,8.15,0,0,1,679,377v-2h3v1.86a17.92,17.92,0,0,1,5.81,1.34l-1.72,3.92a14.14,14.14,0,0,0-5.47-1.29,3.55,3.55,0,0,0-1.63.27.86.86,0,0,0-.47.79,1,1,0,0,0,.34.75,5.45,5.45,0,0,0,1.18.66q.84.36,2.34.84a11.29,11.29,0,0,1,4.34,2.32,4.48,4.48,0,0,1,1.32,3.35,4.89,4.89,0,0,1-1.54,3.75,7.75,7.75,0,0,1-4.5,1.79V398h-3Z"
+                  transform="translate(-662 -369)"/>
+      </svg>
+        <span class="brand brand-primary">PayMe</span>
+    </a>
+    <!-- End Logo -->
+
+    <!-- List -->
+    <ul class="list-inline list-group-flush list-group-borderless">
+        <li class="list-inline-item px-2">
+            <a class="list-group-item-action" href="https://laravel101.com" target="_blank">Support</a>
+        </li>
+        <li class="list-inline-item px-2">
+            <a class="list-group-item-action" href="privacy.html">Privacy</a>
+        </li>
+        <li class="list-inline-item px-2">
+            <a class="list-group-item-action" href="terms.html">Terms</a>
+        </li>
+    </ul>
+    <!-- End List -->
+
+    <!-- Copyright -->
+    <p class="small text-muted mb-3">⚡️ A project by <a href="https://maxkostinevich.com" target="_blank">Max
+        Kostinevich</a> &amp; <a href="https://laravel101.com" target="_blank">Laravel 101</a>
+        ⚡️</p>
+    <p class="small text-muted mb-0">&copy; 2019 <a href="/">PayMe</a> &mdash; All rights reserved.</p>
+    <!-- End Copyright -->
+</footer>
+<!-- ========== END FOOTER ========== -->
+
+
+<!-- Go to Top -->
+<a class="js-go-to u-go-to" href="#" data-position='{"bottom": 15, "right": 15 }' data-type="fixed"
+   data-offset-top="400"
+   data-compensation="#header" data-show-effect="slideInUp" data-hide-effect="slideOutDown">
+    <span class="fas fa-arrow-up u-go-to__inner"></span>
+</a>
+<!-- End Go to Top -->
+
+<!-- JS Core -->
+<script src="public/js/core.js"></script>
+<!-- JS -->
+<script src="public/js/vendor.js"></script>
+</body>
+
+</html>
