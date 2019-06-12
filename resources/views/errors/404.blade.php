@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <!-- Title -->
-    <title>PayMe - Not Found</title>
+    <title>{{ config('app.name', 'Laravel') }} - Not Found</title>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="public/favicon.ico"/>
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="public/css/app.css"/>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body class="bg-img-hero-fixed gradient-half-primary-body-v1">
@@ -76,7 +79,7 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center space-1">
             <!-- Copyright -->
-            <p class="small text-white-70 mb-0">&copy; 2019 <a class="link-white" href="/">PayMe</a> &mdash; All rights
+            <p class="small text-white-70 mb-0">&copy; {{ date('Y') }} <a class="link-white" href="/">{{ config('app.name', 'Laravel') }}</a> &mdash; All rights
                 reserved.</p>
             <!-- End Copyright -->
 
@@ -86,9 +89,9 @@
 <!-- ========== END FOOTER ========== -->
 
 <!-- JS Core -->
-<script src="public/js/core.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <!-- JS -->
-<script src="public/js/vendor.js"></script>
+<script src="{{ asset('js/vendor.js') }}"></script>
 </body>
 
 </html>
