@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
     <!-- Title -->
-    <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>PayMe - Create an account</title>
 
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+    <link rel="shortcut icon" href="public/favicon.ico"/>
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="public/css/app.css"/>
 </head>
 
 <body>
@@ -120,7 +117,7 @@
                     <h4 class="h6 text-white-70 mb-3">Built on top of</h4>
                     <div class="d-flex justify-content-center">
                         <div class="mx-4">
-                            <img class="u-clients" src="{{ asset('img/icon-stripe-white.svg') }}" alt="Stripe"/>
+                            <img class="u-clients" src="public/img/icon-stripe-white.svg" alt="Stripe"/>
                         </div>
                     </div>
                 </div>
@@ -132,78 +129,80 @@
             <div class="row no-gutters">
                 <div class="col-md-8 col-lg-7 col-xl-6 offset-md-2 offset-lg-2 offset-xl-3 space-3 space-lg-0">
                     <!-- Form -->
-                    <form class="js-validate mt-5" method="POST" action="{{ route('login') }}">
-                    @csrf
+                    <form class="js-validate mt-5">
                         <!-- Title -->
                         <div class="mb-7">
-                            <h2 class="h3 text-primary font-weight-normal mb-0">
-                                Welcome <span class="font-weight-semi-bold">back</span>
-                            </h2>
-                            <p>Login to manage your account.</p>
+                            <h1 class="h3 text-primary font-weight-normal mb-0">
+                                Welcome to <span class="font-weight-semi-bold">PayMe</span>
+                            </h1>
+                            <p>Fill-in the form to login into your account.</p>
                         </div>
                         <!-- End Title -->
 
                         <!-- Form Group -->
                         <div class="form-group">
-                            <label class="form-label" for="email">Email address</label>
-                            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="email"  value="{{ old('email') }}"
-                                   placeholder="Email address"/>
-                            @if ($errors->has('email'))
-                                <span class="invalid-feedback" role="alert">
-									<strong>{{ $errors->first('email') }}</strong>
-								</span>
-                            @endif
+                            <label class="form-label" for="name">Your name</label>
+                            <input type="text" class="form-control" name="email" id="name"
+                                   placeholder="Your name"
+                            />
                         </div>
                         <!-- End Form Group -->
 
                         <!-- Form Group -->
                         <div class="form-group">
-                            <label class="form-label" for="password">
-                  <span class="d-flex justify-content-between align-items-center">
-                    Password
-                  @if (Route::has('password.request'))
-                    <a class="link-muted text-capitalize font-weight-normal" href="{{ route('password.request') }}">Forgot
-                      Password?</a>
-                  @endif
-                  </span>
-                            </label>
-                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="password"
-                                   placeholder="Your Password"/>
-                            @if ($errors->has('password'))
-                                <span class="invalid-feedback" role="alert">
-									<strong>{{ $errors->first('password') }}</strong>
-								</span>
-                            @endif
+                            <label class="form-label" for="email">Email address</label>
+                            <input type="email" class="form-control" name="email" id="email"
+                                   placeholder="Email address"
+                            />
                         </div>
                         <!-- End Form Group -->
 
+                        <!-- Form Row -->
+                        <div class="form-row">
+                            <!-- Form Group -->
+                            <div class="form-group col-md-6">
+                                <label class="form-label" for="password">Password</label>
+                                <input type="password" class="form-control" name="password" id="password" />
+                            </div>
+                            <!-- End Form Group -->
+
+                            <!-- Form Group -->
+                            <div class=" form-group col-md-6">
+                                <label class="form-label" for="passwordConfirm">Confirm password</label>
+                                <input type="password" class="form-control" name="password_confirm"
+                                       id="passwordConfirm" />
+                            </div>
+                            <!-- End Form Group -->
+                        </div>
+                        <!-- End Form Row -->
+
                         <!-- Checkbox -->
-                        <div class="mb-5">
+                        <div class="js-form-message mb-5">
                             <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
-                                <input type="checkbox" class="custom-control-input" id="remember" {{ old('remember') ? 'checked' : '' }}
-                                       name="remember" />
-                                <label class="custom-control-label" for="remember">
+                                <input type="checkbox" class="custom-control-input" id="termsCheckbox"
+                                       name="termsCheckbox" required
+                                       data-msg="Please accept our Terms and Conditions." data-error-class="u-has-error"
+                                       data-success-class="u-has-success"/>
+                                <label class="custom-control-label" for="termsCheckbox">
                                     <small>
-                                        Remember Me
+                                        I agree to the
+                                        <a class="link-muted" href="terms.html">Terms and Conditions</a>
                                     </small>
                                 </label>
                             </div>
                         </div>
                         <!-- End Checkbox -->
 
-
                         <!-- Button -->
                         <div class="row align-items-center mb-5">
-                            @if (Route::has('register'))
-                            <div class="col-6">
-                                <span class="small text-muted">Don't have an account?</span>
-                                <a class="small" href="{{ route('register') }}">Signup</a>
+                            <div class="col-5 col-sm-6">
+                                <span class="small text-muted">Already have an account?</span>
+                                <a class="small" href="login.html">Login</a>
                             </div>
-                            @endif
 
-                            <div class="col-6 text-right">
+                            <div class="col-7 col-sm-6 text-right">
                                 <button type="submit" class="btn btn-primary transition-3d-hover">
-                                    Login
+                                    Create account
                                 </button>
                             </div>
                         </div>
@@ -219,9 +218,9 @@
 <!-- ========== END MAIN ========== -->
 
 <!-- JS Core -->
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="public/js/core.js"></script>
 <!-- JS -->
-<script src="{{ asset('js/vendor.js') }}"></script>
+<script src="public/js/vendor.js"></script>
 </body>
 
 </html>
