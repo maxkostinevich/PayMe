@@ -29,9 +29,9 @@
     <!-- End List -->
 
     <!-- Copyright -->
-    <p class="small text-muted mb-3">⚡️ A project by <a href="#">Max Kostinevich</a> &amp; <a href="#">Laravel 101</a>
+    <p class="small text-muted mb-3">⚡️ A project by <a href="https://maxkostinevich.com" target="_blank">Max Kostinevich</a> &amp; <a href="https://laravel101.com" target="_blank">Laravel 101</a>
         ⚡️</p>
-    <p class="small text-muted mb-0">&copy; 2019 <a href="/">PayMe</a> &mdash; All rights reserved.</p>
+    <p class="small text-muted mb-0">&copy; {{ date('Y') }} <a href="/">{{ config('app.name', 'Laravel') }}</a> &mdash; All rights reserved.</p>
     <!-- End Copyright -->
 </footer>
 <!-- ========== END FOOTER ========== -->
