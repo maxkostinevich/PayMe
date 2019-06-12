@@ -24,4 +24,6 @@ Route::group(
     ],
     function () {
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+        Route::get('/settings', 'SettingsController@edit')->name('settings.edit');
     });
