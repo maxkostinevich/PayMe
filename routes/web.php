@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Frontend pages
+Route::get('/', 'PageController@home');
+Route::get('/terms', 'PageController@terms');
+Route::get('/privacy', 'PageController@privacy');
 
 Auth::routes(['verify' => true]);
 
