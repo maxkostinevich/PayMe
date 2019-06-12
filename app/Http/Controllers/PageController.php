@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 // Handle static pages
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->only('home');
+    }
+
     // Homepage
     public function home()
     {

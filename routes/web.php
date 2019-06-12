@@ -18,4 +18,10 @@ Route::get('/privacy', 'PageController@privacy')->name('page.privacy');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(
+    [
+        'middleware' => ['verified'],
+    ],
+    function () {
+        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    });
