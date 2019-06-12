@@ -12,9 +12,9 @@
 */
 
 // Frontend pages
-Route::get('/', 'PageController@home');
-Route::get('/terms', 'PageController@terms');
-Route::get('/privacy', 'PageController@privacy');
+Route::get('/', 'PageController@home')->name('page.home');
+Route::get('/terms', 'PageController@terms')->name('page.terms');
+Route::get('/privacy', 'PageController@privacy')->name('page.privacy');
 
 Auth::routes(['verify' => true]);
 

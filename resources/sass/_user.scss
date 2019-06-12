@@ -1,0 +1,21 @@
+/*------------------------------------
+  File for your custom SCSS style
+------------------------------------*/
+
+
+.u-sticky-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 72px;
+}
+
+@include media-breakpoint-down(sm) {
+  .u-sticky-footer {
+    position: static;
+  }
+}
+
+.u-header--white-nav-links:not(.bg-white):not(.js-header-fix-moment) .u-header__nav-link.active{color:#fff;}
+

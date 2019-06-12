@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <!-- Title -->
-    <title>PayMe - Home</title>
+    <title>{{ config('app.name', 'Laravel') }} - Home</title>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="public/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="public/css/app.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 </head>
 
@@ -218,7 +221,7 @@
                     <div class="col-sm-6 mb-3">
                         <!-- Icon Blocks -->
                         <figure id="icon26" class="ie-height-56 w-100 max-width-8 mb-3">
-                            <img src="public/img/icon-card.svg">
+                            <img src="{{ asset('img/icon-card.svg') }}">
                         </figure>
                         <h4 class="h5">Accept credit cards</h4>
                         <p class="font-size-1">Accept all major credit cards from the customers all over the world.</p>
@@ -228,7 +231,7 @@
                     <div class="col-sm-6 mb-3">
                         <!-- Icon Blocks -->
                         <figure id="icon27" class="ie-height-56 w-100 max-width-8 mb-3">
-                            <img src="public/img/icon-code.svg">
+                            <img src="{{ asset('img/icon-code.svg') }}">
                         </figure>
                         <h4 class="h5">No coding required</h4>
                         <p class="font-size-1">Create a Payment Form and start accepting payments without any
@@ -241,7 +244,7 @@
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <!-- Icon Blocks -->
                         <figure id="icon25" class="ie-height-56 w-100 max-width-8 mb-3">
-                            <img src="public/img/icon-security.svg">
+                            <img src="{{ asset('img/icon-security.svg') }}">
                         </figure>
                         <h4 class="h5">World-class security</h4>
                         <p class="font-size-1">PayMe is built on Stripe, which is PCI-certified Service Provider.</p>
@@ -251,7 +254,7 @@
                     <div class="col-sm-6">
                         <!-- Icon Blocks -->
                         <figure id="icon28" class=" ie-height-56 w-100 max-width-8 mb-3">
-                            <img src="public/img/icon-payout.svg">
+                            <img src="{{ asset('img/icon-payout.svg') }}">
                         </figure>
                         <h4 class="h5">Automatic payouts</h4>
                         <p class="font-size-1">Your earnings will be automatically sent directly to your Bank
@@ -326,9 +329,9 @@
 <!-- End Go to Top -->
 
 <!-- JS Core -->
-<script src="public/js/core.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <!-- JS -->
-<script src="public/js/vendor.js"></script>
+<script src="{{ asset('js/vendor.js') }}"></script>
 </body>
 
 </html>

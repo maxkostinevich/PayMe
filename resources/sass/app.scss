@@ -1,8 +1,24 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Load fonts
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+@import url("https://use.fontawesome.com/releases/v5.6.1/css/all.css");
 
-// Variables
-@import 'variables';
+// Vendor styles
+@import "vendor";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// Bootstrap setup
+@import "~bootstrap/scss/functions";
+
+// Theme setup
+@import "grain/variables";
+
+// Custom setup
+@import "user-variables";
+
+// Bootstrap core
+@import "~bootstrap/scss/bootstrap";
+
+// Frontend theme
+@import "grain/grain";
+
+// Custom core
+@import "user";
