@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class SettingsController extends Controller
 {
@@ -53,4 +54,19 @@ class SettingsController extends Controller
             ->with('status', 'Your settings have been updated successfully.');
     }
 
+    /**
+     * Delete user avatar
+     */
+    public function deleteAvatar(Request $request)
+    {
+        $user = auth()->user();
+        if ($user->avatar) {
+            File::delete('storage/' . $user->avatar);
+            $user->avatar = '';
+            $user->save();
+        }
+        return redirect()
+            ->back()
+            ->with('status', 'Your avatar has been updated successfully.');
+    }
 }

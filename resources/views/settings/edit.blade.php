@@ -39,6 +39,10 @@
             <!-- Settings Form -->
             <div class="card">
                 <div class="card-body p-5">
+                    <form id="delete-avatar" method="post" action="{{ route('settings.delete_avatar') }}">
+                        @csrf
+                        <input type="hidden" name="_method" value="delete">
+                    </form>
                     <form method="post" action="{{ route('settings.update') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="_method" value="patch">
@@ -60,7 +64,8 @@
                                     <input id="fileAttachmentBtn" name="avatar" type="file"
                                            class="file-attachment-btn__label">
                                 </label>
-                                <button type="button" class="btn btn-sm btn-soft-secondary mb-1 mb-sm-0">
+                                <button type="button" class="btn btn-sm btn-soft-secondary mb-1 mb-sm-0"
+                                    onclick="if(confirm('Delete avatar?')){document.getElementById('delete-avatar').submit();return false;}">
                                     Delete
                                 </button>
                             </div>

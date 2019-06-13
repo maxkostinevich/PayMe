@@ -6,11 +6,14 @@
                 <!-- User Info -->
                 <div class="media d-block d-sm-flex align-items-sm-center">
                     <div class="u-lg-avatar position-relative mb-3 mb-sm-0 mr-3">
+                        @if(auth()->user()->avatar)
+                            <img class="img-fluid rounded-circle"
+                                 src="{{ url('storage/' . auth()->user()->avatar) }}">
+                        @else
                             <span class="btn btn-lg btn-light btn-icon text-muted gradient-half-primary-v2 rounded-circle">
                               <span class="btn-icon__inner">{{ substr(Auth::user()->name, 0, 1) }}</span>
                             </span>
-                        <!--img class="img-fluid rounded-circle"
-                             src="#"-->
+                        @endif
                         <span class="badge badge-md badge-outline-success badge-pos badge-pos--bottom-right rounded-circle">
                   <span class="fas fa-check"></span>
                 </span>
@@ -19,7 +22,7 @@
                         <span class="d-block text-white small">Howdy,</span>
                         <span class="d-block text-white font-weight-medium">{{ Auth::user()->name }}</span>
                         <div class="mt-1">
-                            <a class="link-white small" href="settings.html">Edit profile</a>
+                            <a class="link-white small" href="{{ route('settings.edit') }}">Edit profile</a>
                         </div>
 
                     </div>
