@@ -23,10 +23,20 @@ Route::group(
         'middleware' => ['verified'],
     ],
     function () {
+        // Dashboard
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
+        // Settings
         Route::get('/settings', 'SettingsController@edit')->name('settings.edit');
         Route::patch('/settings', 'SettingsController@update')->name('settings.update');
         Route::patch('/settings/password', 'SettingsController@updatePassword')->name('settings.update_password');
         Route::delete('/settings/avatar', 'SettingsController@deleteAvatar')->name('settings.delete_avatar');
+
+        // Forms
+        Route::get('/forms', 'FormController@index')->name('forms.index');
+        Route::get('/forms/create', 'FormController@create')->name('forms.create');
+        Route::post('/forms/create', 'FormController@store')->name('forms.store');
+        Route::get('/forms/{form}', 'FormController@edit')->name('forms.edit');
+        Route::patch('/forms/{form}', 'FormController@update')->name('forms.update');
+        Route::delete('/forms/{form}', 'FormController@destroy')->name('forms.destroy');
     });
