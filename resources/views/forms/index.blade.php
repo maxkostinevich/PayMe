@@ -42,9 +42,9 @@
                     @forelse($forms as $form)
                         <tr>
                             <td class="align-middle font-weight-normal">
-                                <a href="#" target="_blank" class="d-block text-{{ $form->is_active ? 'success' : 'muted' }} small">
+                                <a href="{{ route('form.show', $form->uid) }}" target="_blank" class="d-block text-{{ $form->is_active ? 'success' : 'muted' }} small">
                                     <span class="fas fa-circle small mr-1"></span>
-                                    {{ $form->uid }}</a>
+                                    {{ route('form.show', $form->uid) }}</a>
                             </td>
                             <td class="align-middle">
                                 <span class="d-block">{{ $form->amountFormattedWithCurrency() }}</span>

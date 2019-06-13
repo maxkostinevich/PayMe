@@ -16,6 +16,9 @@ Route::get('/', 'PageController@home')->name('page.home');
 Route::get('/terms', 'PageController@terms')->name('page.terms');
 Route::get('/privacy', 'PageController@privacy')->name('page.privacy');
 
+// Payment Form
+Route::get('/p/{uid}', 'PaymentFormController@show')->name('form.show');
+
 Auth::routes(['verify' => true]);
 
 Route::group(
