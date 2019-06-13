@@ -2,6 +2,7 @@
 
 namespace App;
 
+use function GuzzleHttp\Psr7\str;
 use Illuminate\Database\Eloquent\Model;
 
 class Form extends Model
@@ -13,7 +14,13 @@ class Form extends Model
     }
 
     // Return formatted amount
-    public function amountFormatted(){
+    public function amountFormatted()
+    {
         return $this->amount / 100;
+    }
+
+    public function amountFormattedWithCurrency()
+    {
+        return strtoupper($this->amount / 100 . ' ' . $this->currency);
     }
 }

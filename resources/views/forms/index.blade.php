@@ -39,63 +39,37 @@
                     </tr>
                     </thead>
                     <tbody class="font-size-1">
+                    @forelse($forms as $form)
+                        <tr>
+                            <td class="align-middle font-weight-normal">
+                                <a href="#" target="_blank" class="d-block text-{{ $form->is_active ? 'success' : 'muted' }} small">
+                                    <span class="fas fa-circle small mr-1"></span>
+                                    {{ $form->uid }}</a>
+                            </td>
+                            <td class="align-middle">
+                                <span class="d-block">{{ $form->amountFormattedWithCurrency() }}</span>
+                                <span class="d-block text-muted small">{{ $form->description }}</span>
+                            </td>
+                            <td class="align-middle">
+                                <span class="d-block">2,390.00 USD</span>
+                                <a href="#" class="link-muted small">10 payments</a>
+                            </td>
+                            <td class="align-middle">
+                                <a href="{{ route('forms.edit', $form) }}" class="small mr-3"><span class="fas fa-edit"></span> Edit</a>
+                                <a href="#" class="small text-danger" onclick="if(confirm('Delete this record?')){document.getElementById('delete-entity-{{ $form->id }}').submit();return false;}"><span class="far fa-trash-alt"></span> Delete</a>
+                                <form id="delete-entity-{{ $form->id }}" action="{{ route('forms.destroy', $form) }}" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    @csrf
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
                     <tr>
-                        <td class="align-middle font-weight-normal">
-                            <a href="#" target="_blank" class="d-block text-success small">
-                                <span class="fas fa-circle small mr-1"></span>
-                                https://payme.rocks/p/UeVvxgEgoZ86</a>
-                        </td>
-                        <td class="align-middle">
-                            <span class="d-block">239.00 USD</span>
-                            <span class="d-block text-muted small">Laravel Course</span>
-                        </td>
-                        <td class="align-middle">
-                            <span class="d-block">2,390.00 USD</span>
-                            <a href="#" class="link-muted small">10 payments</a>
-                        </td>
-                        <td class="align-middle">
-                            <a href="#" class="small mr-3"><span class="fas fa-edit"></span> Edit</a>
-                            <a href="#" class="small text-danger"><span class="far fa-trash-alt"></span> Delete</a>
+                        <td colspan="4" class="align-center">
+                            <strong>No records found</strong><br>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="align-middle font-weight-normal">
-                            <a href="#" target="_blank" class="d-block text-muted small">
-                                <span class="fas fa-circle small mr-1"></span>
-                                https://payme.rocks/p/UeVvxgEgoZ86</a>
-                        </td>
-                        <td class="align-middle">
-                            <span class="d-block">239.00 USD</span>
-                            <span class="d-block text-muted small">Laravel Course</span>
-                        </td>
-                        <td class="align-middle">
-                            <span class="d-block">2,390.00 USD</span>
-                            <a href="#" class="link-muted small">10 payments</a>
-                        </td>
-                        <td class="align-middle">
-                            <a href="#" class="small mr-3"><span class="fas fa-edit"></span> Edit</a>
-                            <a href="#" class="small text-danger"><span class="far fa-trash-alt"></span> Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle font-weight-normal">
-                            <a href="#" target="_blank" class="d-block text-success small">
-                                <span class="fas fa-circle small mr-1"></span>
-                                https://payme.rocks/p/UeVvxgEgoZ86</a>
-                        </td>
-                        <td class="align-middle">
-                            <span class="d-block">239.00 USD</span>
-                            <span class="d-block text-muted small">Laravel Course</span>
-                        </td>
-                        <td class="align-middle">
-                            <span class="d-block">2,390.00 USD</span>
-                            <a href="#" class="link-muted small">10 payments</a>
-                        </td>
-                        <td class="align-middle">
-                            <a href="#" class="small mr-3"><span class="fas fa-edit"></span> Edit</a>
-                            <a href="#" class="small text-danger"><span class="far fa-trash-alt"></span> Delete</a>
-                        </td>
-                    </tr>
+                    @endforelse
                     </tbody>
                 </table>
             </div>
@@ -103,28 +77,5 @@
         </div>
     </div>
     <!-- End Forms -->
-    <!-- Pagination -->
-    <nav class="d-flex justify-content-between align-items-center mt-3">
-        <ul class="pagination">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">«</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-            <li class="page-item"><a class="page-link" href="#">8</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">»</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
-        </ul>
-        <small class="text-muted pb-2">Showing 3 of 8 entries</small>
-    </nav>
-    <!-- End Pagination -->
+    {{ $forms->links('components.pagination') }}
 @endsection

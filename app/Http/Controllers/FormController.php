@@ -24,7 +24,8 @@ class FormController extends Controller
      */
     public function index()
     {
-        return view('forms.index');
+        $forms = Form::orderBy('id', 'desc')->paginate(25);
+        return view('forms.index', compact('forms'));
     }
 
     /**
