@@ -55,9 +55,9 @@
                                 <a href="#" class="link-muted small">10 payments</a>
                             </td>
                             <td class="align-middle">
-                                <a href="{{ route('forms.edit', $form) }}" class="small mr-3"><span class="fas fa-edit"></span> Edit</a>
-                                <a href="#" class="small text-danger" onclick="if(confirm('Delete this record?')){document.getElementById('delete-entity-{{ $form->id }}').submit();return false;}"><span class="far fa-trash-alt"></span> Delete</a>
-                                <form id="delete-entity-{{ $form->id }}" action="{{ route('forms.destroy', $form) }}" method="POST">
+                                <a href="{{ route('forms.edit', $form->uid) }}" class="small mr-3"><span class="fas fa-edit"></span> Edit</a>
+                                <a href="#" class="small text-danger" onclick="if(confirm('Delete this record?')){document.getElementById('delete-entity-{{ $form->uid }}').submit();return false;}"><span class="far fa-trash-alt"></span> Delete</a>
+                                <form id="delete-entity-{{ $form->uid }}" action="{{ route('forms.destroy', $form->uid) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     @csrf
                                 </form>

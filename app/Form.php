@@ -16,11 +16,11 @@ class Form extends Model
     // Return formatted amount
     public function amountFormatted()
     {
-        return $this->amount / 100;
+        return number_format($this->amount / 100, 2, '.', ',');
     }
 
     public function amountFormattedWithCurrency()
     {
-        return strtoupper($this->amount / 100 . ' ' . $this->currency);
+        return $this->amountFormatted() . ' ' . strtoupper($this->currency);
     }
 }

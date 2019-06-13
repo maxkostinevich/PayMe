@@ -36,7 +36,8 @@ class FormController extends Controller
     public function create()
     {
         $form = new Form();
-        return $this->edit($form);
+        $form->user_id = auth()->user()->id;
+        return view('forms.edit', compact('form'));
     }
 
     /**
@@ -54,12 +55,17 @@ class FormController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param \App\Form $form
-     * @return \Illuminate\Http\Response
      */
-    public function edit(Form $form)
+    public function edit($uid)
     {
+        $form = Form::where('id', $uid)
+            ->orWhere('uid', $uid)
+            ->firstOrFail();
+
+        if (auth()->user()->id != $form->user_id) {
+            return abort(401);
+        }
+
         return view('forms.edit', compact('form'));
     }
 
@@ -79,7 +85,7 @@ class FormController extends Controller
         ]);
 
         $form->description = $request->input('description');
-        $form->amount = $request->input('amount') * 100;
+        $form->amount = (float)str_replace(',', '', $request->input('amount')) * 100;
         $form->currency = $request->input('currency');
         $form->is_active = $request->input('is_active');
 
@@ -95,12 +101,13 @@ class FormController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param \App\Form $form
-     * @return \Illuminate\Http\Response
      */
-    public function destroy(Form $form)
+    public function destroy($uid)
     {
+        $form = Form::where('id', $uid)
+            ->orWhere('uid', $uid)
+            ->firstOrFail();
+
         if (auth()->user()->id != $form->user_id) {
             return abort(401);
         }

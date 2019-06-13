@@ -36,7 +36,7 @@ Route::group(
         Route::get('/forms', 'FormController@index')->name('forms.index');
         Route::get('/forms/create', 'FormController@create')->name('forms.create');
         Route::post('/forms/create', 'FormController@store')->name('forms.store');
-        Route::get('/forms/{form}', 'FormController@edit')->name('forms.edit');
+        Route::get('/forms/{uid}', 'FormController@edit')->name('forms.edit');
         Route::patch('/forms/{form}', 'FormController@update')->name('forms.update');
-        Route::delete('/forms/{form}', 'FormController@destroy')->name('forms.destroy');
+        Route::delete('/forms/{uid}', 'FormController@destroy')->name('forms.destroy');
     });
