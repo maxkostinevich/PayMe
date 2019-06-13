@@ -11,4 +11,9 @@ class Form extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    // Return formatted amount
+    public function amountFormatted(){
+        return $this->amount / 100;
+    }
 }
