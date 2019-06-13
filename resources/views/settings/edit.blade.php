@@ -15,19 +15,23 @@
             <div class="border-bottom mb-3 pb-3">
                 <div class="card">
                     <div class="card-body p-5 text-center">
-                        <button type="button" class="btn btn-primary mb-3">Connect Stripe Account</button>
+                        @if(auth()->user()->stripe_account_id)
+                        <span class="btn btn-icon btn-soft-success text-success rounded-circle m-3">
+                          <span class="btn-icon__inner"><span class="fas fa-check"></span></span>
+                        </span>
+                        <span class="d-block text-muted small">Your Stripe Account is connected.</span>
+                        <a href="#" class="d-block text-danger small" onclick="if(confirm('Deactivate Stripe Account?')){document.getElementById('deactivate-stripe-account').submit();return false;}">Deactivate</a>
+                        <form id="deactivate-stripe-account" method="post" action="{{ route('stripe.deactivate') }}">
+                            @csrf
+                        </form>
+                        @else
+                        <a href="{{ route('stripe.oauth') }}" class="btn btn-primary mb-3">Connect Stripe Account</a>
                         <span class="d-block text-muted small">In order to get paid, please connect your
                                     <a href="https://stripe.com"
                                        target="_blank">Stripe</a>
                                     account
                                 </span>
-                        <!--
-                        <span class="btn btn-icon btn-soft-success text-success rounded-circle m-3">
-                          <span class="btn-icon__inner"><span class="fas fa-check"></span></span>
-                        </span>
-                        <span class="d-block text-muted small">Your Stripe Account is connected.</span>
-                        <a href="#" class="d-block text-danger small">Deactivate</a>
-                        -->
+                        @endif
                     </div>
                 </div>
             </div>

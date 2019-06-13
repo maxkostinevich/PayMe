@@ -35,6 +35,11 @@ Route::group(
         Route::patch('/settings/password', 'SettingsController@updatePassword')->name('settings.update_password');
         Route::delete('/settings/avatar', 'SettingsController@deleteAvatar')->name('settings.delete_avatar');
 
+        // Stripe oAuth
+        Route::get('/stripe/oauth', 'StripeOAuthController@oauth')->name('stripe.oauth');
+        Route::get('/stripe/authenticate', 'StripeOAuthController@authenticate')->name('stripe.authenticate');
+        Route::post('/stripe/deactivate', 'StripeOAuthController@deactivate')->name('stripe.deactivate');
+
         // Forms
         Route::get('/forms', 'FormController@index')->name('forms.index');
         Route::get('/forms/create', 'FormController@create')->name('forms.create');
