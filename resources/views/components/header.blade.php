@@ -42,7 +42,7 @@
                             <ul class="navbar-nav u-header__navbar-nav">
                                 <!-- Dashboard -->
                                 <li class="nav-item u-header__nav-item">
-                                    <a class="nav-link u-header__nav-link active" href="dashboard.html">
+                                    <a class="nav-link u-header__nav-link active" href="{{ route('dashboard') }}">
                                         Dashboard
                                     </a>
                                 </li>
@@ -58,7 +58,7 @@
 
                                 <!-- Payment Forms -->
                                 <li class="nav-item u-header__nav-item">
-                                    <a class="nav-link u-header__nav-link" href="forms.html">
+                                    <a class="nav-link u-header__nav-link" href="{{ route('forms.index') }}">
                                         Payment forms
                                     </a>
                                 </li>
@@ -83,7 +83,7 @@
 
             <div class="ml-lg-auto">
                 <!-- Button -->
-                <a class="btn btn-sm btn-soft-white text-nowrap transition-3d-hover" href="form-new.html">
+                <a class="btn btn-sm btn-soft-white text-nowrap transition-3d-hover" href="{{ route('forms.create') }}">
                     <span class="fas fa-plus small mr-2"></span>
                     Create payment form
                 </a>
