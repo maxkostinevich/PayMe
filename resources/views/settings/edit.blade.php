@@ -39,22 +39,25 @@
             <!-- Settings Form -->
             <div class="card">
                 <div class="card-body p-5">
-                    <form method="post" action="{{ route('settings.update') }}">
+                    <form method="post" action="{{ route('settings.update') }}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="_method" value="patch">
                         <div class="media align-items-center border-bottom pb-3 mb-3">
                             <div class="u-lg-avatar mr-3">
-                                        <span class="btn btn-lg btn-icon text-muted gradient-half-primary-v2 rounded-circle border shadow-sm">
-                                          <span class="btn-icon__inner">J</span>
-                                        </span>
-                                <!--img class="img-fluid rounded-circle border shadow-sm"
-                                     src="#"-->
+                                @if(auth()->user()->avatar)
+                                    <img class="img-fluid rounded-circle border shadow-sm"
+                                     src="{{ url('storage/' . auth()->user()->avatar) }}">
+                                @else
+                                <span class="btn btn-lg btn-icon text-muted gradient-half-primary-v2 rounded-circle border shadow-sm">
+                                  <span class="btn-icon__inner">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                                </span>
+                                @endif
                             </div>
                             <div class="media-body">
                                 <label class="btn btn-sm btn-primary file-attachment-btn mb-1 mb-sm-0 mr-1"
                                        for="fileAttachmentBtn">
                                     Upload New Picture
-                                    <input id="fileAttachmentBtn" name="file-attachment" type="file"
+                                    <input id="fileAttachmentBtn" name="avatar" type="file"
                                            class="file-attachment-btn__label">
                                 </label>
                                 <button type="button" class="btn btn-sm btn-soft-secondary mb-1 mb-sm-0">

@@ -34,11 +34,17 @@ class SettingsController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'avatar' => 'image|mimes:jpeg,jpg,png,gif|max:1024'
         ]);
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->company = $request->input('company');
+
+        if ($request->file('avatar')) {
+            $avatar = $request->file('avatar')->store('uploads', 'public');
+            $user->avatar = $avatar;
+        }
 
         $user->save();
 
@@ -46,4 +52,5 @@ class SettingsController extends Controller
             ->back()
             ->with('status', 'Your settings have been updated successfully.');
     }
+
 }
