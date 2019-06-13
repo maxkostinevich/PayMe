@@ -27,5 +27,6 @@ Route::group(
 
         Route::get('/settings', 'SettingsController@edit')->name('settings.edit');
         Route::patch('/settings', 'SettingsController@update')->name('settings.update');
+        Route::patch('/settings/password', 'SettingsController@updatePassword')->name('settings.update_password');
         Route::delete('/settings/avatar', 'SettingsController@deleteAvatar')->name('settings.delete_avatar');
     });

@@ -95,23 +95,25 @@
             <!-- Password Form -->
             <div class="card">
                 <div class="card-body p-5">
-                    <form>
+                    <form method="post" action="{{ route('settings.update_password') }}">
+                        @csrf
+                        <input type="hidden" name="_method" value="patch">
                         <div class="form-group border-bottom pb-2 mb-2">
-                            <label for="currentPassword">Current Password</label>
-                            <input type="password" class="form-control" id="currentPassword"
+                            <label for="old_password">Current Password</label>
+                            <input type="password" class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}" name="old_password" id="old_password"
                                    placeholder="Your Current Password">
                         </div>
                         <div class="form-group">
                             <label for="password">New Password</label>
-                            <input type="email" class="form-control" id="password"
+                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="password"
                                    placeholder="Enter New Password">
                         </div>
                         <div class="form-group">
-                            <label for="password_confirm">Confirm New Password</label>
-                            <input type="password" class="form-control" id="password_confirm"
+                            <label for="password_confirmation">Confirm New Password</label>
+                            <input type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" id="password_confirmation"
                                    placeholder="Confirm New Password">
                         </div>
-                        <button type="button" class="btn btn-sm btn-primary float-right">Update Password</button>
+                        <button type="submit" class="btn btn-sm btn-primary float-right">Update Password</button>
                     </form>
                 </div>
             </div>

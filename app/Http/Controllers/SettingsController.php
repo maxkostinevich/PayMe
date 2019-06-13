@@ -60,13 +60,43 @@ class SettingsController extends Controller
     public function deleteAvatar(Request $request)
     {
         $user = auth()->user();
+
         if ($user->avatar) {
             File::delete('storage/' . $user->avatar);
             $user->avatar = '';
             $user->save();
         }
+
         return redirect()
             ->back()
             ->with('status', 'Your avatar has been updated successfully.');
     }
+
+    /**
+     * Update user password
+     */
+    public function updatePassword(Request $request)
+    {
+        $user = auth()->user();
+
+        $request->validate([
+            'old_password' => ['required', 'required_with:password',
+                function ($attribute, $value, $fail) use ($user) {
+                    if (!password_verify($value, $user->password)) {
+                        return $fail(__('The current password is incorrect.'));
+                    }
+                }
+            ],
+            'password' => 'required|required_with:old_password|string|min:6|confirmed',
+        ]);
+
+        $user->password = bcrypt($request->input('password'));
+
+        $user->save();
+
+        return redirect()
+            ->back()
+            ->with('status', 'Your password has been updated successfully.');
+    }
+
 }
