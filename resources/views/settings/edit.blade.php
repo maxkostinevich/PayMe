@@ -39,7 +39,9 @@
             <!-- Settings Form -->
             <div class="card">
                 <div class="card-body p-5">
-                    <form>
+                    <form method="post" action="{{ route('settings.update') }}">
+                        @csrf
+                        <input type="hidden" name="_method" value="patch">
                         <div class="media align-items-center border-bottom pb-3 mb-3">
                             <div class="u-lg-avatar mr-3">
                                         <span class="btn btn-lg btn-icon text-muted gradient-half-primary-v2 rounded-circle border shadow-sm">
@@ -62,20 +64,20 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name"
+                            <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name', auth()->user()->name) }}" name="name" id="name"
                                    placeholder="Your Name">
                         </div>
                         <div class="form-group">
                             <label for="company">Company</label>
-                            <input type="text" class="form-control" id="company"
+                            <input type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" value="{{ old('company', auth()->user()->company) }}" name="company" id="company"
                                    placeholder="Your Company">
                         </div>
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email"
+                            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email', auth()->user()->email) }}" name="email" id="email"
                                    placeholder="Your Email">
                         </div>
-                        <button type="button" class="btn btn-sm btn-primary float-right">Update</button>
+                        <button type="submit" class="btn btn-sm btn-primary float-right">Update</button>
                     </form>
                 </div>
             </div>

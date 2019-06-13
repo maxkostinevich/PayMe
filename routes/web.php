@@ -26,4 +26,5 @@ Route::group(
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
         Route::get('/settings', 'SettingsController@edit')->name('settings.edit');
+        Route::patch('/settings', 'SettingsController@update')->name('settings.update');
     });

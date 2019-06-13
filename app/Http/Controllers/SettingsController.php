@@ -23,4 +23,27 @@ class SettingsController extends Controller
     {
         return view('settings.edit');
     }
+
+    /**
+     * Update user settings.
+     */
+    public function update(Request $request)
+    {
+        $user = auth()->user();
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+        ]);
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->company = $request->input('company');
+
+        $user->save();
+
+        return redirect()
+            ->back()
+            ->with('status', 'Your settings have been updated successfully.');
+    }
 }
