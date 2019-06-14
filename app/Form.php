@@ -13,6 +13,11 @@ class Form extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function payments()
+    {
+        return $this->hasMany('App\Payment');
+    }
+
     // Return formatted amount
     public function amountFormatted()
     {
