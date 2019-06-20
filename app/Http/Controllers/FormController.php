@@ -24,7 +24,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        $forms = Form::orderBy('id', 'desc')->paginate(25);
+        $forms = auth()->user()->forms()->orderBy('id', 'desc')->paginate(25);
         return view('forms.index', compact('forms'));
     }
 
@@ -78,6 +78,10 @@ class FormController extends Controller
      */
     public function update(Request $request, Form $form)
     {
+        if (auth()->user()->id != $form->user_id) {
+            return abort(401);
+        }
+
         $request->validate([
             'description' => 'required',
             'amount' => 'required|numeric|min:1',
