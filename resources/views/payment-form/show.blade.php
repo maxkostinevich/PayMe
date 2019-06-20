@@ -90,15 +90,25 @@
                             <div class="h2">Thank you!</div>
                             <div class="text-muted">Your payment has been received.</div>
                         </div>
-                        <div class="payment-form">
+                        <div id="payment-error" style="display:none"
+                             class="alert alert-light border rounded text-center animated pulse"
+                             role="alert">
+                            <div class="display-1 text-danger"><i class="far fa-times-circle"></i></div>
+                            <div class="h2">Oops!</div>
+                            <div class="text-muted">Something went wrong with your payment.</div>
+                        </div>
+                        <form method="post" id="payment-form" class="payment-form">
+                            @csrf
+                            <input type="hidden" name="stripeToken" id="stripeToken" value="">
+                            <div id="card-errors" class="text-danger small"></div>
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Full Name"
-                                               aria-label="Email">
+                                        <input name="customer_name" required type="text" class="form-control" placeholder="Full Name"
+                                               aria-label="Name">
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +118,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-envelope"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Email" aria-label="Email">
+                                        <input name="customer_email" type="email" required class="form-control" placeholder="Email" aria-label="Email">
                                     </div>
                                 </div>
                             </div>
@@ -140,14 +150,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <button id="paybtn" type="button" class="btn btn-block btn-primary transition-3d-hover">
+                            <button id="paybtn" type="submit" class="btn btn-block btn-primary transition-3d-hover">
                                 Pay {{ $form->amountFormattedWithCurrency() }}
                             </button>
                             <div class="text-center mt-3">
                                 <a href="https://stripe.com" target="_blank"><img
                                         src="{{ asset('img/powered_by_stripe.svg') }}"></a>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -188,7 +198,7 @@
 <script src="{{ asset('js/vendor.js') }}"></script>
 
 <script>
-    var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+    var stripe = Stripe('{{ config('stripe.publishable_key') }}');
     var elements = stripe.elements();
     var style = {};
 
@@ -213,16 +223,57 @@
     });
     cardCVC.mount('#card-cvc');
 
-    $('#paybtn').on('click', function (e) {
-        var button = $(this);
-        button.attr('disabled', true);
-        button.html('<i class="fas fa-spinner fa-spin"></i> Please wait..');
-        setTimeout((function () {
-            $('.payment-form').hide();
-            $('#payment-alert').show();
-        }), 1000);
+    $('#payment-form').on('submit', function (e) {
+
+        e.preventDefault();
+        // Clear error message
+        $('#card-errors').html('');
+
+        stripe.createToken(cardNumber).then(function(result) {
+            if (result.error) {
+                // Show Card error message
+                $('#card-errors').html(result.error.message);
+            } else {
+                stripeTokenHandler(result.token);
+            }
+        });
 
     });
+
+    // Send Stripe Token to Server
+    function stripeTokenHandler(token) {
+
+        // Update Stripe Token ID
+        var form = $('#payment-form');
+        $('#stripeToken').val(token.id);
+
+        // Submit the form via AJAX
+        var button = $('#paybtn');
+        button.attr('disabled', true);
+        button.html('<i class="fas fa-spinner fa-spin"></i> Please wait..');
+        $.ajax({
+            url     : form.attr('action'),
+            type    : form.attr('method'),
+            dataType: 'json',
+            data    : form.serialize(),
+            success : function( data ) {
+                var hand = setTimeout(function(){
+                    $('#payment-form').hide();
+                    $('#payment-alert').show();
+                    clearTimeout(hand);
+                }, 1000);
+
+            },
+            error   : function( xhr, err ) {
+                // Log errors if AJAX call is failed
+                console.log(xhr);
+                console.log(err);
+                $('#payment-form').hide();
+                $('#payment-error').show();
+            }
+        });
+        return false;
+    }
 </script>
 </body>
 

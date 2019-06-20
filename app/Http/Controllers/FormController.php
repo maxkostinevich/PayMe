@@ -80,7 +80,7 @@ class FormController extends Controller
     {
         $request->validate([
             'description' => 'required',
-            'amount' => 'required',
+            'amount' => 'required|numeric|min:1',
             'currency' => 'required',
         ]);
 

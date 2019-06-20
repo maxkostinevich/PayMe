@@ -20,7 +20,7 @@ class StripeOAuthController extends Controller
     public function oauth()
     {
         $url = \Stripe\OAuth::authorizeUrl([
-            'scope' => 'read_only',
+            'scope' => 'read_write',
         ]);
         return redirect($url);
     }

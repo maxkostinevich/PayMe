@@ -18,6 +18,7 @@ Route::get('/privacy', 'PageController@privacy')->name('page.privacy');
 
 // Payment Form
 Route::get('/p/{uid}', 'PaymentFormController@show')->name('form.show');
+Route::post('/p/{uid}', 'PaymentFormController@store')->name('form.store');
 
 Auth::routes(['verify' => true]);
 

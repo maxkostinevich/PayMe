@@ -2,6 +2,8 @@
 
 // Stripe Settings
 return [
+    // Stripe Publishable Key
+    'publishable_key' => env('STRIPE_PUBLISHABLE_KEY', ''),
     // Stripe Secret Key
     'secret' => env('STRIPE_SECRET', ''),
     // Stripe Connect Client ID
