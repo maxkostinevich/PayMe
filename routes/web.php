@@ -48,4 +48,11 @@ Route::group(
         Route::get('/forms/{uid}', 'FormController@edit')->name('forms.edit');
         Route::patch('/forms/{form}', 'FormController@update')->name('forms.update');
         Route::delete('/forms/{uid}', 'FormController@destroy')->name('forms.destroy');
+
+        Route::get('/forms/{uid}/payments', 'FormPaymentsController@index')->name('form.payments.index');
+
+        // Payments
+        Route::get('/payments', 'PaymentController@index')->name('payments.index');
+        // Payment refund
+        Route::patch('/payments/{payment}', 'PaymentController@update')->name('payments.update');
     });

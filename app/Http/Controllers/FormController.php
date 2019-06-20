@@ -24,7 +24,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        $forms = auth()->user()->forms()->orderBy('id', 'desc')->paginate(25);
+        $forms = auth()->user()->forms()->orderBy('id', 'desc')->with('payments')->withCount('payments')->paginate(25);
         return view('forms.index', compact('forms'));
     }
 

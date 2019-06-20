@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Settings')
+@section('title', ($form->id ? 'Edit' : 'Create') . ' payment form' )
 
 @section('content')
 <!-- Title -->

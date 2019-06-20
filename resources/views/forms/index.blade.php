@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Settings')
+@section('title', 'Payment Forms')
 
 @section('content')
     <!-- Title -->
@@ -51,8 +51,8 @@
                                 <span class="d-block text-muted small">{{ $form->description }}</span>
                             </td>
                             <td class="align-middle">
-                                <span class="d-block">2,390.00 USD</span>
-                                <a href="#" class="link-muted small">10 payments</a>
+                                <span class="d-block">{{ amountFormattedWithCurrency($form->payments->sum('amount'), $form->currency) }}</span>
+                                <a href="{{ route('form.payments.index', $form->uid) }}" class="link-muted small">{{ $form->payments()->count() }} {{ Str::plural('payment', $form->payments()->count()) }}</a>
                             </td>
                             <td class="align-middle">
                                 <a href="{{ route('forms.edit', $form->uid) }}" class="small mr-3"><span class="fas fa-edit"></span> Edit</a>

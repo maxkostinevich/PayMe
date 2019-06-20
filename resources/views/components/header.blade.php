@@ -50,7 +50,7 @@
 
                                 <!-- Payments -->
                                 <li class="nav-item u-header__nav-item">
-                                    <a class="nav-link u-header__nav-link" href="payments.html">
+                                    <a class="nav-link u-header__nav-link" href="{{ route('payments.index') }}">
                                         Payments
                                     </a>
                                 </li>

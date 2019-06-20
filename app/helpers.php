@@ -8,3 +8,13 @@ function get_payment_fee($amount)
     $fee = round($fee);
     return $fee;
 }
+
+function amountFormatted($amount)
+{
+    return number_format($amount / 100, 2, '.', ',');
+}
+
+function amountFormattedWithCurrency($amount, $currency)
+{
+    return amountFormatted($amount) . ' ' . strtoupper($currency);
+}
