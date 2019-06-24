@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PaymentCreated;
 use App\Payment;
 use Exception;
 use App\Form;
@@ -69,6 +70,9 @@ class PaymentFormController extends Controller
             $payment->application_fee_amount = $charge->application_fee_amount;
             $payment->receipt_url = $charge->receipt_url;
             $payment->save();
+
+            event(new PaymentCreated($payment));
+
             // return success
             return response()->json(['success' => true], 200);
         } catch (Exception $e) {

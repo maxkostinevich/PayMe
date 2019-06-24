@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PaymentRefunded;
 use App\Payment;
 use Exception;
 use Illuminate\Http\Request;
@@ -54,6 +55,8 @@ class PaymentController extends Controller
 
             $payment->is_refunded = 1;
             $payment->save();
+
+            event(new PaymentRefunded($payment));
 
             return redirect()
                 ->back()->with('status', 'Refund has been processed successfully');

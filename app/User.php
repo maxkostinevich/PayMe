@@ -77,7 +77,7 @@ class User extends Authenticatable implements MustVerifyEmail
         })->sum();
 
         // Calculate sales and payments in last 30 days
-        $date = \Carbon\Carbon::today()->subDays(30);
+        $date = Carbon::today()->subDays(30);
         $stats['salesLast30Days'] = $this->payments()->notRefunded()->where('created_at', '>=', $date)->get()->groupBy('currency')->map(function ($item) {
             return $item->sum(function ($payment) {
                 return $payment->amount - $payment->application_fee_amount;
