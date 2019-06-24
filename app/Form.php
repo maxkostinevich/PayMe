@@ -4,9 +4,12 @@ namespace App;
 
 use function GuzzleHttp\Psr7\str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Form extends Model
 {
+    use SoftDeletes;
+
     // Owner of the form
     public function user()
     {
