@@ -42,7 +42,7 @@
                             <ul class="navbar-nav u-header__navbar-nav">
                                 <!-- Dashboard -->
                                 <li class="nav-item u-header__nav-item">
-                                    <a class="nav-link u-header__nav-link active" href="{{ route('dashboard') }}">
+                                    <a class="nav-link u-header__nav-link {{ Route::currentRouteNamed('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                                         Dashboard
                                     </a>
                                 </li>
@@ -50,7 +50,7 @@
 
                                 <!-- Payments -->
                                 <li class="nav-item u-header__nav-item">
-                                    <a class="nav-link u-header__nav-link" href="{{ route('payments.index') }}">
+                                    <a class="nav-link u-header__nav-link {{ Route::currentRouteNamed('payments.*') ? 'active' : '' }}" href="{{ route('payments.index') }}">
                                         Payments
                                     </a>
                                 </li>
@@ -58,7 +58,7 @@
 
                                 <!-- Payment Forms -->
                                 <li class="nav-item u-header__nav-item">
-                                    <a class="nav-link u-header__nav-link" href="{{ route('forms.index') }}">
+                                    <a class="nav-link u-header__nav-link {{ Route::currentRouteNamed('forms.*') ? 'active' : '' }}" href="{{ route('forms.index') }}">
                                         Payment forms
                                     </a>
                                 </li>
