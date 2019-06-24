@@ -50,6 +50,17 @@
                 <!-- Navigation -->
                 <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse">
                     <ul class="navbar-nav u-header__navbar-nav">
+                        @if(auth()->user()->isAdmin())
+                        <li class="nav-item u-header__nav-item">
+                            <a class="nav-link u-header__nav-link" href="/horizon/" target="_blank">Horizon</a>
+                        </li>
+                        <li class="nav-item u-header__nav-item">
+                            <a class="nav-link u-header__nav-link" href="{{ route('admin.users.index') }}">Administration</a>
+                        </li>
+                        <li class="nav-item u-header__nav-item text-muted">
+                            |
+                        </li>
+                        @endif
                         <!-- Logout -->
                         <li class="nav-item u-header__nav-item">
                             <a class="nav-link u-header__nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>

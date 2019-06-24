@@ -40,6 +40,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    // Is Master Admin
+    public function isAdmin()
+    {
+        return in_array($this->email, [
+            config('admin.email')
+        ]);
+    }
+
     // User forms
     public function forms()
     {
@@ -92,6 +100,18 @@ class User extends Authenticatable implements MustVerifyEmail
 
         // Payments quantity in last 30 days;
         $stats['paymentsLast30Days'] = $this->payments()->notRefunded()->where('created_at', '>=', $date)->count();
+
+        // Customer Lifetime Value (sum of application fee)
+        $stats['ltv'] = $this->payments()->notRefunded()->get()->groupBy('currency')->map(function ($item) {
+            return $item->sum(function ($payment) {
+                return $payment->application_fee_amount;
+            });
+        })->map(function ($amount, $currency) {
+            // convert all earnings to USD
+            $reverse_rates = cache('currency_rates');
+            return $amount * $reverse_rates[$currency];
+        })->sum();
+
 
         return $stats;
     }

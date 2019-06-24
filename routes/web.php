@@ -56,3 +56,18 @@ Route::group(
         // Payment refund
         Route::patch('/payments/{payment}', 'PaymentController@update')->name('payments.update');
     });
+
+Route::group(
+    [
+        'middleware' => ['is_admin'],
+        'prefix' => 'admin',
+        'as' => 'admin.',
+        'namespace' => 'Admin',
+    ],
+    function () {
+        // Users
+        Route::get('/users', 'UserController@index')->name('users.index');
+        Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
+        Route::patch('/users/{id}', 'UserController@restore')->name('users.restore');
+    }
+);
