@@ -15,6 +15,14 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    // Available currencies
+    'currencies' => [
+        'usd',
+        'eur',
+        'cad',
+        'aud',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -36,11 +36,10 @@
                                        placeholder="2000">
                             </div>
                             <div class="col-5">
-                                <select name="currency" class="form-control">
-                                    <option value="usd" {{ old('currency', $form->currency) == 'usd' ? 'selected' : '' }}>USD</option>
-                                    <option value="eur" {{ old('currency', $form->currency) == 'eur' ? 'selected' : '' }}>EUR</option>
-                                    <option value="cad" {{ old('currency', $form->currency) == 'cad' ? 'selected' : '' }}>CAD</option>
-                                    <option value="aud" {{ old('currency', $form->currency) == 'aud' ? 'selected' : '' }}>AUD</option>
+                                <select name="currency" class="form-control" {{ $form->id ? 'disabled' : '' }}>
+                                    @foreach(config('app.currencies') as $currency)
+                                        <option value="{{ $currency }}" {{ old('currency', $form->currency) == $currency ? 'selected' : '' }}>{{ strtoupper($currency) }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
