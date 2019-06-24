@@ -30,6 +30,11 @@ class PaymentFormController extends Controller
             ->where('is_active', 1)
             ->firstOrFail();
 
+        // If Stripe is Not Connected - Return 404
+        if (!$form->user->stripe_account_id) {
+            return abort(404);
+        }
+
         return view('payment-form.show', compact('form'));
     }
 
