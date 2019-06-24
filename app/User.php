@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Carbon\Carbon;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -47,5 +48,49 @@ class User extends Authenticatable implements MustVerifyEmail
     public function payments()
     {
         return $this->hasMany('App\Payment');
+    }
+
+    // Get user payments stats
+    public function getStats()
+    {
+        $stats = [];
+        // Calculate total sales
+        $stats['totalSales'] = $this->payments()->notRefunded()->get()->groupBy('currency')->map(function ($item) {
+            return $item->sum(function ($payment) {
+                return $payment->amount;
+            });
+        })->map(function ($amount, $currency) {
+            // convert all earnings to USD
+            $reverse_rates = cache('currency_rates');
+            return $amount * $reverse_rates[$currency];
+        })->sum();
+
+        // Calculate net earnings
+        $stats['netEarnings'] = $this->payments()->notRefunded()->get()->groupBy('currency')->map(function ($item) {
+            return $item->sum(function ($payment) {
+                return $payment->amount - $payment->application_fee_amount;
+            });
+        })->map(function ($amount, $currency) {
+            // convert all earnings to USD
+            $reverse_rates = cache('currency_rates');
+            return $amount * $reverse_rates[$currency];
+        })->sum();
+
+        // Calculate sales and payments in last 30 days
+        $date = \Carbon\Carbon::today()->subDays(30);
+        $stats['salesLast30Days'] = $this->payments()->notRefunded()->where('created_at', '>=', $date)->get()->groupBy('currency')->map(function ($item) {
+            return $item->sum(function ($payment) {
+                return $payment->amount - $payment->application_fee_amount;
+            });
+        })->map(function ($amount, $currency) {
+            // convert all earnings to USD
+            $reverse_rates = cache('currency_rates');
+            return $amount * $reverse_rates[$currency];
+        })->sum();
+
+        // Payments quantity in last 30 days;
+        $stats['paymentsLast30Days'] = $this->payments()->notRefunded()->where('created_at', '>=', $date)->count();
+
+        return $stats;
     }
 }

@@ -21,7 +21,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
         $payments = auth()->user()->payments()->orderBy('id', 'desc')->limit(10)->get();
-        return view('dashboard.index', compact('payments'));
+        $stats = auth()->user()->getStats();
+
+        return view('dashboard.index', ['payments' => $payments, 'stats' => $stats]);
     }
 }

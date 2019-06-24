@@ -27,7 +27,7 @@
           <span class="fas fa-dollar-sign btn-icon__inner"></span>
         </span>
                     <div class="media-body">
-                        <span class="d-block font-size-2">450.99 USD</span>
+                        <span class="d-block font-size-2">{{ amountFormattedWithCurrency($stats['totalSales']) }}</span>
                         <h2 class="h6 text-secondary font-weight-normal mb-0">Total sales</h2>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
           <span class="fas fa-university btn-icon__inner"></span>
         </span>
                     <div class="media-body">
-                        <span class="d-block font-size-2">399.99 USD</span>
+                        <span class="d-block font-size-2">{{ amountFormattedWithCurrency($stats['netEarnings']) }}</span>
                         <h3 class="h6 text-secondary font-weight-normal mb-0">Total net earnings</h3>
                     </div>
                 </div>
@@ -60,11 +60,11 @@
                     </span>
                     <div class="media-body">
                         <div class="">
-                            <span class="font-weight-medium font-size-1">1,024 USD</span>
+                            <span class="font-weight-medium font-size-1">{{ amountFormattedWithCurrency($stats['salesLast30Days']) }}</span>
                             <span class="text-secondary font-size-1">Earned</span>
                         </div>
                         <div class="mb-1">
-                            <span class="font-weight-medium font-size-1">25</span>
+                            <span class="font-weight-medium font-size-1">{{ $stats['paymentsLast30Days'] }}</span>
                             <span class="text-secondary font-size-1">Payments</span>
                         </div>
                         <h3 class="h6 text-secondary font-weight-normal mb-0">In last 30 days</h3>

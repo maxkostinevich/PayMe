@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
+
+    // Scope a query to only include refunded payments.
+    public function scopeRefunded($query)
+    {
+        return $query->where('is_refunded', 1);
+    }
+
+    // Scope a query to only include not refunded payments.
+    public function scopeNotRefunded($query)
+    {
+        return $query->where('is_refunded', 0);
+    }
+
     // Payment form
     public function form()
     {
