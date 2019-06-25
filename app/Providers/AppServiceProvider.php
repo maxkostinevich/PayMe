@@ -27,6 +27,16 @@ class AppServiceProvider extends ServiceProvider
         // Force HTTPS connection
         \URL::forceScheme('https');
 
+        $client = new GuzzleHttp\Client();
+        $result = $client->request('GET', 'http://apilayer.net/api/live', [
+            'query' => [
+                'access_key' => config('currencylayer.api'),
+                'source' => 'usd',
+                'currencies' => implode(',', config('app.currencies')),
+                'format' => 1
+            ]
+        ]);
+
         // Refresh currency exchange rates every 100000 seconds (~27.8 hours)
         cache()->remember('currency_rates', 100000, function () {
             $reverse_rates = [];
@@ -39,9 +49,9 @@ class AppServiceProvider extends ServiceProvider
                     'format' => 1
                 ]
             ]);
-            if ($result->getStatusCode() == 200) {
-                $result = $result->getBody()->getContents();
-                $rates = json_decode($result, true)['quotes'];
+            $result = json_decode($result->getBody()->getContents());
+            if(!array_key_exists('error', $result)){
+                $rates = $result['quotes'];
                 // reverse rates
                 foreach ($rates as $pair => $rate) {
                     $pair = strtolower(substr($pair, 3));
