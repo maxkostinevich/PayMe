@@ -85,6 +85,8 @@
     <!-- Content Section -->
         <div class="bg-light">
             <div class="container space-2">
+                @include('components.demo')
+
                 @include('components.notification')
 
                 @yield('content')

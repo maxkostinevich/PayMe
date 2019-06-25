@@ -170,6 +170,7 @@
 <!-- ========== FOOTER ========== -->
 <footer>
     <div class="container space-bottom-1">
+        @include('components.demo')
         <div class="row justify-content-between align-items-center">
             <div class="col-sm-5 mb-3 mb-sm-0">
                 <!-- Copyright -->

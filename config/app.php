@@ -15,6 +15,9 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    // Demo Mode
+    'demo_mode' => env('DEMO_MODE', true),
+
     // Available currencies
     'currencies' => [
         'usd',

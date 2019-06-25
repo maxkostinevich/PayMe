@@ -109,14 +109,6 @@
                             <span class="fas fa-arrow-right small ml-2"></span>
                         </a>
 
-                        <!--div class="mt-5 alert alert-warning" role="alert">
-                          <div class="alert-heading mb-2">🔥🔥🔥 Test mode is <b>ON</b>.</div>
-                          <div class="small">
-                            You can learn how to develop such projects and get full source code of the app at <a href="https://laravel101.com"
-                              target="_blank" class="alert-link"><u>Laravel 101</u></a>.
-                          </div>
-                        </div-->
-
                     </div>
                     <!-- End Content -->
                 </div>
@@ -203,8 +195,10 @@
     </div>
     <!-- End Hero Section -->
 
+
     <!-- What We Do Section -->
     <div id="content-section" class="container space-2">
+        @include('components.demo')
         <div class="row justify-content-lg-between">
             <div class="col-lg-4 mb-7 mb-lg-0">
                 <!-- Title -->
