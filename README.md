@@ -1,11 +1,12 @@
-<p align="center"><a href="https://laravel101.com" target="_blank"><img src="https://user-images.githubusercontent.com/10295466/56030519-b302f780-5d25-11e9-8344-a9690cf54d63.png"></a></p>
+<p align="center"><img width="832" alt="payme-form" src="https://user-images.githubusercontent.com/10295466/72933278-7b27e680-3d72-11ea-804c-fed3c306d4fa.png">
+</p>
 
 ---
 
 # PayMe
 
 PayMe is a checkout payment solution built on top of Stripe API.
-The application is used as a real-world SaaS example in our [book](https://laravel101.com/book). 
+The application is used as a real-world SaaS example in my [book](https://maxkostinevich.com/books/laravel-saas/). 
 
 ### Demo
 Demo is available at [PayMe.rocks](https://payme.rocks)
@@ -39,8 +40,7 @@ Email verification is enabled, so do not forget to set proper SMTP settings for 
 
 ---
 ### Want to learn more?
-- [Learn](https://laravel101.com/book) how to build **real-world SaaS applications using Laravel**.
-- Subscribe to our [Youtube Channel](https://www.youtube.com/channel/UCxcoXXEjRERiLX1ixP-3Vew) to stay up to date with our latest videos.
+- Subscribe to my [Youtube Channel](https://www.youtube.com/channel/UCxcoXXEjRERiLX1ixP-3Vew) to stay up to date with my latest videos.
 
 ---
 ### [MIT License](https://opensource.org/licenses/MIT)
@@ -57,4 +57,4 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESSED OR
 YOU ASSUME ALL RISK ASSOCIATED WITH THE INSTALLATION AND USE OF THE SOFTWARE. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS OF THE SOFTWARE BE LIABLE FOR CLAIMS, DAMAGES OR OTHER LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE. LICENSE HOLDERS ARE SOLELY RESPONSIBLE FOR DETERMINING THE APPROPRIATENESS OF USE AND ASSUME ALL RISKS ASSOCIATED WITH ITS USE, INCLUDING BUT NOT LIMITED TO THE RISKS OF PROGRAM ERRORS, DAMAGE TO EQUIPMENT, LOSS OF DATA OR SOFTWARE PROGRAMS, OR UNAVAILABILITY OR INTERRUPTION OF OPERATIONS.
 
 ---
-(c) 2019 [Laravel 101](https://laravel101.com) - All rights reserved.
+(c) 2019 [Max Kostinevich](https://maxkostinevich.com) - All rights reserved.
